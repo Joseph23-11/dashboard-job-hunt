@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useReducer } from "react";
 import { Badge } from "@/components/ui/badge";
 import {
   Table,
@@ -9,8 +9,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { JOB_LISTING_COLUMNS, JOB_LISTING_DATA } from "@/constant";
-import { Button } from "@/components/ui/button";
-import { MoreVertical } from "lucide-react";
+
+import ButtonActionTable from "@/components/organisms/ButtonActionTable";
 
 interface JobListingsPageProps {}
 
@@ -48,9 +48,7 @@ const JobListingsPage: FC<JobListingsPageProps> = async ({}) => {
                   {item.applicants} / {item.needs}
                 </TableCell>
                 <TableCell>
-                  <Button size="icon" variant="outline">
-                    <MoreVertical className="w-4 h-4" />
-                  </Button>
+                  <ButtonActionTable url="/job-detail/1" />
                 </TableCell>
               </TableRow>
             ))}
