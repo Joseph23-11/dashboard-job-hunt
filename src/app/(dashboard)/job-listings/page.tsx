@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { JOB_LISTING_COLUMNS, JOB_LISTING_DATA } from "@/constant";
+import { JOB_LISTING_COLUMNS, JOB_LISTING_DATA } from "@/constants";
 
 import ButtonActionTable from "@/components/organisms/ButtonActionTable";
 

@@ -1,3 +1,7 @@
+import OverviewForm from "@/components/forms/OverviewForm";
+import SocialMediaForm from "@/components/forms/SocialMediaForm";
+import TeamForm from "@/components/forms/TeamForm";
+import DialogAddTeam from "@/components/forms/TeamForm/DialogAddTeam";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getServerSession } from "next-auth";
 import React, { FC } from "react";
@@ -17,9 +21,15 @@ const SettingsPage: FC<SettingsPageProps> = async ({}) => {
           <TabsTrigger value="socialLinks">Social Links</TabsTrigger>
           <TabsTrigger value="teams">Teams</TabsTrigger>
         </TabsList>
-        <TabsContent value="overview"></TabsContent>
-        <TabsContent value="socialLinks"></TabsContent>
-        <TabsContent value="teams"></TabsContent>
+        <TabsContent value="overview">
+          <OverviewForm />
+        </TabsContent>
+        <TabsContent value="socialLinks">
+          <SocialMediaForm />
+        </TabsContent>
+        <TabsContent value="teams">
+          <TeamForm />
+        </TabsContent>
       </Tabs>
     </div>
   );

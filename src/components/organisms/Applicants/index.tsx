@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import ButtonActionTable from "../ButtonActionTable";
-import { JOB_APPLICANT_COLUMNS, JOB_APPLICANT_DATA } from "@/constant";
+import { JOB_APPLICANT_COLUMNS, JOB_APPLICANT_DATA } from "@/constants";
 
 interface ApplicantsProps {}
 
