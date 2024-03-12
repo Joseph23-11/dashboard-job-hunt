@@ -12,47 +12,47 @@ interface SettingsPageProps {}
 export const revalidate = 0;
 
 async function getDetailCompany() {
-	const session = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions);
 
-	const company = await prisma.company.findFirst({
-		where: { id: session?.user.id },
-		include: {
-			Companyoverview: true,
-			CompanySocialMedia: true,
-			CompanyTeam: true,
-		},
-	});
+  const company = await prisma.company.findFirst({
+    where: { id: session?.user.id },
+    include: {
+      Companyoverview: true,
+      CompanySocialMedia: true,
+      CompanyTeam: true,
+    },
+  });
 
-	return company;
+  return company;
 }
 
 const SettingsPage: FC<SettingsPageProps> = async ({}) => {
-	const company = await getDetailCompany();
+  const company = await getDetailCompany();
 
-	console.log(company);
+  console.log(company);
 
-	return (
-		<div>
-			<div className="font-semibold text-3xl mb-5">Settings</div>
+  return (
+    <div>
+      <div className="font-semibold text-3xl mb-5">Settings</div>
 
-			<Tabs defaultValue="overview">
-				<TabsList className="mb-8">
-					<TabsTrigger value="overview">Overview</TabsTrigger>
-					<TabsTrigger value="socialLinks">Social Links</TabsTrigger>
-					<TabsTrigger value="teams">Teams</TabsTrigger>
-				</TabsList>
-				<TabsContent value="overview">
-					<OverviewForm detail={company?.Companyoverview[0]} />
-				</TabsContent>
-				<TabsContent value="socialLinks">
-					<SocialMediaForm detail={company?.CompanySocialMedia[0]} />
-				</TabsContent>
-				<TabsContent value="teams">
-					<TeamForm teams={company?.CompanyTeam} />
-				</TabsContent>
-			</Tabs>
-		</div>
-	);
+      <Tabs defaultValue="overview">
+        <TabsList className="mb-8">
+          <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="socialLinks">Social Links</TabsTrigger>
+          <TabsTrigger value="teams">Teams</TabsTrigger>
+        </TabsList>
+        <TabsContent value="overview">
+          <OverviewForm detail={company?.Companyoverview[0]} />
+        </TabsContent>
+        <TabsContent value="socialLinks">
+          <SocialMediaForm detail={company?.CompanySocialMedia[0]} />
+        </TabsContent>
+        <TabsContent value="teams">
+          <TeamForm teams={company?.CompanyTeam} />
+        </TabsContent>
+      </Tabs>
+    </div>
+  );
 };
 
 export default SettingsPage;
